@@ -40,7 +40,7 @@ public class Program
 
         // app.UseAuthorization();
 
-        app.UseCors();
+        app.UseCors("AllowAll");
 
         app.MapControllers();
 

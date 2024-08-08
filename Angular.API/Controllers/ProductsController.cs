@@ -11,7 +11,7 @@ public class ProductsController(AppDbContext dbContext) : ControllerBase
 {
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll() 
     {
         return Ok(await dbContext.Products.ToListAsync());
     }
