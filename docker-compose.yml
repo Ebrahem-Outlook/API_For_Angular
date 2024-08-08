@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  angular.api:
+    image: ${DOCKER_REGISTRY-}angularapi
+    build:
+      context: .
+      dockerfile: Angular.API/Dockerfile
