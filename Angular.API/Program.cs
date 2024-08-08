@@ -20,6 +20,13 @@ public class Program
         builder.Services.AddDbContext<AppDbContext>(options
             => options.UseSqlServer(builder.Configuration.GetConnectionString("Local-SqlServer")));
 
+        builder.Services.AddCors(options => options.AddPolicy("AllowAll", builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        }));
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -29,10 +36,11 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+        // app.UseHttpsRedirection();
 
-        app.UseAuthorization();
+        // app.UseAuthorization();
 
+        app.UseCors();
 
         app.MapControllers();
 
